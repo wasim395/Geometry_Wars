@@ -110,21 +110,26 @@ void Game::run()
 	
     while (m_running)
     {
-        m_entities.update();
-        sMovement();
+        if (!m_pause)
+        {
+            m_entities.update();
+            sMovement();
+            sEnemySpawner();
+            sCollision();
+            sLifespan();
+            m_currentFrame++;
+        }
+        
         sUserInput();
-        sEnemySpawner();
-        sCollision();
-        sLifespan();
         sRender();
-        m_currentFrame++;
+
     }
 }
 
 
-void Game::setPaused(bool paused)
+void Game::setPaused()
 {
-	m_pause = paused;
+	m_pause = !m_pause ;
 }
 
 void Game::spawnPlayer()
@@ -592,20 +597,24 @@ void Game::sUserInput()
             switch (event.key.code)
             {
             case sf::Keyboard::W:
-                std::cout << "W key pressed! Move forward." << std::endl;
+                //std::cout << "W key pressed! Move forward." << std::endl;
                 m_player->cInput->up = false;
                 break;
             case sf::Keyboard::A:
-                std::cout << "A key pressed! Move left." << std::endl;
+                //std::cout << "A key pressed! Move left." << std::endl;
                 m_player->cInput->left = false;
                 break;
             case sf::Keyboard::S:
-                std::cout << "S key pressed! Move backward." << std::endl;
+                //std::cout << "S key pressed! Move backward." << std::endl;
                 m_player->cInput->down = false;
                 break;
             case sf::Keyboard::D:
-                std::cout << "D key pressed! Move right." << std::endl;
+                //std::cout << "D key pressed! Move right." << std::endl;
                 m_player->cInput->right = false;
+                break;
+            case sf::Keyboard::P:
+                //std::cout << "p key pressed! Game Pauses." << std::endl;
+                setPaused();
                 break;
             default:
                 break;
