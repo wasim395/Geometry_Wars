@@ -24,7 +24,10 @@ https://github.com/wasim395/Geometry_Wars/assets/168566160/72337843-c5af-40b6-96
 
 Before you begin, make sure you have the following installed on your system:
 
-- Microsoft Visual Studio with latest version installed
+- g++ compiler
+- Git (for cloning the repository )
+- Microsoft Visual Studio (latest version) for C++ development.
+
 
 ---
 
@@ -33,9 +36,9 @@ Before you begin, make sure you have the following installed on your system:
 #### 1. Clone the Repository
 
 - Clone the repository to your local machine using the following command:
-sh
-   git clone https://github.com/wasim395/Geometry_Wars.git
-
+  ```
+  git clone https://github.com/wasim395/Geometry_Wars.git
+   ```
 
 #### 2. Open the Project in Visual Studio:
 - Navigate to the Geometry_Wars directory.
